@@ -25,6 +25,9 @@ public class TransacaoFinanceira {
     public Double getValor() {
         return this.valor;
     }
+    public TransacaoFinanceira(){
+
+    }
     public TransacaoFinanceira(Long id, String descricao, Double valor, LocalDate data) {
         this.id = id;
         this.descricao = descricao;
@@ -41,9 +44,6 @@ public class TransacaoFinanceira {
         this.data = data;
     }
 
-    public TransacaoFinanceira(){
-
-    }
 
     public Long getId() {
         return id;

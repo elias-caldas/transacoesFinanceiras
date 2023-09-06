@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Criar Nova Transação</title>
+</head>
+<body>
+    <h1>Criar Nova Transação Financeira</h1>
+    
+
+    <form th:action="@{/api/transacoes/criar}" method="post" th:object="${transacao}">
+
+        <label for="descricao">Descrição:</label>
+        <input type="text" id="descricao" name="descricao" th:field="*{descricao}" required>
+        
+        <label for="valor">Valor:</label>
+        <input type="number" id="valor" name="valor" step="0.01" th:field="*{valor}" required>
+        
+        <label for="data">Data:</label>
+        <input type="date" id="data" name="data" th:field="*{data}" required>
+        
+
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    </form>
+    
+    <a th:href="@{/api/transacoes/listar}">Voltar para Listagem de Transações</a>
+</body>
+</html>

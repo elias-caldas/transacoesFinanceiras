@@ -51,5 +51,17 @@ public class TransacaoFinanceiraController {
     return "redirect:/api/transacoes/listar";
     }
 
+    @GetMapping("/criar")
+    public String criarTransacaoForm(Model model) {
+        model.addAttribute("transacao", new TransacaoFinanceira());
+        return "criar-transacao"; 
+    }
+
+    @PostMapping("/criar")
+     public String criarTransacao(@ModelAttribute("transacao") TransacaoFinanceira transacao) {
+    transacaoService.adicionarTransacao(transacao);
+     return "redirect:/api/transacoes/listar";
+     }
+
 
 }
