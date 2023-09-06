@@ -24,6 +24,14 @@ public class TransacaoFinanceiraController {
     @GetMapping("/listar")
     public String listarTransacoes(Model model) {
         List<TransacaoFinanceira> transacoes = transacaoService.listarTodasTransacoes();
+
+        double total = transacoes.stream().mapToDouble(TransacaoFinanceira::getValor).sum();
+    
+        String totalFormatado = String.format("%.2f", total);
+
+        model.addAttribute("totalFormatado", totalFormatado);
+    
+    
         model.addAttribute("transacoes", transacoes);
         return "lista-transacoes";
     }
@@ -59,7 +67,7 @@ public class TransacaoFinanceiraController {
 
     @PostMapping("/criar")
      public String criarTransacao(@ModelAttribute("transacao") TransacaoFinanceira transacao) {
-    transacaoService.adicionarTransacao(transacao);
+    transacaoService.adicionarTransacao(transacao); 
      return "redirect:/api/transacoes/listar";
      }
 
