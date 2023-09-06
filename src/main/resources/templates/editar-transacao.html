@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Transação</title>
+</head>
+<body>
+    <h1>Editar Transação</h1>
+    <form th:action="@{/api/transacoes/atualizar}" th:object="${transacao}" method="post">
+        <input type="hidden" th:field="*{id}" />
+        <label for="descricao">Descrição:</label>
+        <input type="text" id="descricao" th:field="*{descricao}" />
+        <label for="valor">Valor:</label>
+        <input type="text" id="valor" th:field="*{valor}" />
+        <label for="data">Data:</label>
+        <input type="text" id="data" th:field="*{data}" />
+        <button type="submit">Salvar</button>
+    </form>
+</body>
+</html>
